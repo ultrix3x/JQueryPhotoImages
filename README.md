@@ -67,22 +67,22 @@ If this value is assigned then it overrides the individual properties for boxSha
 ### marginLeft
 A margin-left to use for the image. If the value is set to "leave" then the margin-left will not be changed.
 
-**Default value** = 'leave
+**Default value** = leave
 
 ### marginTop
 A margin-top to use for the image. If the value is set to "leave" then the margin-top will not be changed.
 
-**Default value** = 'leave
+**Default value** = leave
 
 ### marginRight
 A margin-right to use for the image. If the value is set to "leave" then the margin-right will not be changed.
 
-**Default value** = 'leave
+**Default value** = leave
 
 ### marginBottom
 A margin-bottom to use for the image. If the value is set to "leave" then the margin-bottom will not be changed.
 
-**Default value** = 'leave
+**Default value** = leave
 
 ### rotate
 If this property is assigned then the image will be rotated.
