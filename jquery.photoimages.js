@@ -86,7 +86,9 @@
   function SetBorder(options, jObject) {
     // Add the border
     jObject.css('border', options.border);
+    // Get the property name for boxShadow
     var propName = GetPropName('boxShadow');
+    // Check if the property name exists
     if(propName !== false) {
       // Add the box-shadow if there is a property name available
       jObject.css(propName, options.boxShadow);
@@ -158,8 +160,13 @@
   }
   // A wrapper function to allow rotate on different browsers
   function Rotate(jObject, rotate) {
-    // W3C
-    jObject.css(GetPropName('transform'), 'rotate('+rotate+'deg)');
+    // Get property name for transform
+    var propName = GetPropName('transform');
+    // If property name exists
+    if(propName !== false) {
+      // Perform rotate
+      jObject.css(propName, 'rotate('+rotate+'deg)');
+    }
   }
   
   // Extend jQuery(selector)
