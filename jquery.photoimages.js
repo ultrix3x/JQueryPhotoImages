@@ -45,11 +45,52 @@
     options.rotateDelay = options.rotateDelay || 40;
     return options;
   }
+  // Variable to cache previously requested propNames
+  var propNames = {};
+  // Propertynames to check for
+  var propTest = {
+    'boxShadow': [
+      'boxShadow', 'MozBoxShadow', 'WebkitBoxShadow'
+    ],
+    'transform': [
+      'transform', 'MozTransform', 'WebkitTransform'
+    ]
+  };
+  // Get the correct property name
+  function GetPropName(propName) {
+    // Has this property name been checked before
+    if(typeof(propNames[propName]) != 'undefined') {
+      // If so then return the previous result
+      return propNames[propName];
+    }
+    // Check that the propTest has a test for this propName
+    if(propTest[propName] && (propTest[propName].length > 0)) {
+      // Get the root element for the document
+      var node = document.documentElement;
+      // Loop through the different names to test
+      for(var i = 0; i < propTest[propName].length; i++) {
+        // If this property name exist in the document root element...
+        if(propTest[propName][i] in node.style) {
+          // ... then store the result for upcoming requests
+          propNames[propName] = propTest[propName][i];
+          // Return the property name
+          return propNames[propName];
+        }
+      }
+    }
+    // Set the property name to false to avoid future checks
+    propNames[propName] = false;
+    // Return false to indicate that the property wasn't found
+    return false;
+  }
   function SetBorder(options, jObject) {
     // Add the border
     jObject.css('border', options.border);
-    // Add the box-shadow
-    jObject.css('boxShadow', options.boxShadow);
+    var propName = GetPropName('boxShadow');
+    if(propName !== false) {
+      // Add the box-shadow if there is a property name available
+      jObject.css(propName, options.boxShadow);
+    }
   }
   function SetMargin(options, jObject) {
     // If marginLeft is defined (not equal to leave) then set it
@@ -118,7 +159,7 @@
   // A wrapper function to allow rotate on different browsers
   function Rotate(jObject, rotate) {
     // W3C
-    jObject.css('transform', 'rotate('+rotate+'deg)');
+    jObject.css(GetPropName('transform'), 'rotate('+rotate+'deg)');
   }
   
   // Extend jQuery(selector)
