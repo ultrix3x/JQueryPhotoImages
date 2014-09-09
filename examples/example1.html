@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create photo effect on images</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- load jQuery -->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- load jQuery plugin for photoImages -->
+    <script src="../jquery.photoimages.min.js"></script>
+    <script>
+      jQuery(document).ready(function() {
+        // Create photoImages with a seed-based rotation
+        jQuery('.test1').photoImages({
+          boxShadowOffsetX: '10px',
+          boxShadowOffsetY: '10px',
+          boxShadowLength: '10px',
+          boxShadowColor: '#7f7f7f',
+          marginRight: '10px',
+          rotate: 'seed'
+        });
+        // Create photoImages with a random-based rotation
+        jQuery('.test2').photoImages({
+          boxShadowOffsetX: '10px',
+          boxShadowOffsetY: '10px',
+          boxShadowLength: '10px',
+          boxShadowColor: '#7f7f7f',
+          marginTop: '15px',
+          marginRight: '15px',
+          marginBottom: '15px',
+          rotateMin: -20,
+          rotateMax: 20,
+          rotate: 'random'
+        });
+        // Create photoImages with aa animated rotation
+        jQuery('.test3').photoImages({
+          rotate: 'animate',
+          rotateStep: -3,
+          rotateDelay: 20
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <img src="images/image1.png" class="test1" />
+      <img src="images/image2.png" class="test1" />
+      <img src="images/image3.png" class="test1" />
+      <img src="images/image4.png" class="test1" />
+      <img src="images/image5.png" class="test1" />
+    </div>
+    <div>
+      <img src="images/image1.png" class="test2" />
+      <img src="images/image2.png" class="test2" />
+      <img src="images/image3.png" class="test2" />
+      <img src="images/image4.png" class="test2" />
+      <img src="images/image5.png" class="test2" />
+    </div>
+    <div>
+      <img src="images/image1.png" class="test3" />
+      <img src="images/image2.png" class="test3" />
+      <img src="images/image3.png" class="test3" />
+      <img src="images/image4.png" class="test3" />
+      <img src="images/image5.png" class="test3" />
+    </div>
+  </body>
+</html>
